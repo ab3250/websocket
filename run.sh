@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+WD="$(pwd)";sed -i '/.*set \$rtdir.*/c\set $rtdir '"$(pwd)"';' $(pwd)/nginx/conf/nginx.conf
 sudo $(pwd)/nginx/sbin/nginx -c $(pwd)/nginx/conf/nginx.conf &
 /usr/bin/google-chrome-stable localhost &
 guile start.scm
