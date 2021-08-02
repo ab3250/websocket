@@ -1,6 +1,4 @@
-#! /usr/bin/env 
-!#
- 
+;;#! /usr/bin/env 
 (use-modules  
   (web request)
   (web response)
@@ -18,15 +16,25 @@
   (ice-9 iconv)
   (ice-9 receive)
   (ice-9 regex)
-  (web socket server))
+  (web socket server)
+  (json json)
+  (fibers))
 
 ;;(include "ab-library.scm" )
+
+; (define (handler store data)
+;   (pk 'store store)
+;   (if (string? data)
+;       (string-reverse data)
+;       "hello"))
 
 (define (handler data) 
   (cond 
     ((string=? data "button1") (display "hello button 1"))
-    ((string=? data "button2") (display "hello button 2"))) #f)
-    
+    ((string=? data "button2") (display "hello button 2"))) 
+    #f)
+
 (run-ws-server handler (make-server-socket #:port 9090))
+
 
 
